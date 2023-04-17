@@ -24,10 +24,10 @@ class CarDaoTest {
 
     @Test
     void save() {
-        Long gameResultId = gameResultDao.insert(new GameResultEntity(3));
+        Long gameResultId = gameResultDao.insert(new GameResultEntity(3,"채채,헙크"));
         Assertions.assertThat(1L).isEqualTo(gameResultId);
 
-        CarEntity carEntity = new CarEntity("헙크", 3, true, 1L);
+        CarEntity carEntity = new CarEntity("헙크", 3,  1L);
         Long carId = carDao.insert(carEntity);
         Assertions.assertThat(1L).isEqualTo(carId);
     }

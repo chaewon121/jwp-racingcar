@@ -26,13 +26,14 @@ public class RacingGameService {
     @Transactional
     public ResultDto getResult(UserInputDto inputDto) {
         RacingGame racingGame = getRacingGame(inputDto);
-
-        Long gameResultId = repository.saveGameResult(new TryCount(inputDto.getCount()));
+        TryCount tryCount = new TryCount(inputDto.getCount());
 
         List<Cars> results = getResults(racingGame);
         Cars finalResult = results.get(results.size() - 1);
         Cars winnersResult = racingGame.decideWinners();
 
+
+        Long gameResultId = repository.saveGameResult(tryCount, winnersResult);
         repository.saveCars(gameResultId, finalResult, winnersResult);
 
         return new ResultDto(winnersResult, finalResult);

@@ -18,14 +18,13 @@ public class CarDao {
     }
 
     public Long insert(final CarEntity carEntity){
-        String sql = "insert into car (player_name, final_position, is_winner, game_result_id) values (?, ?, ?, ?)";
+        String sql = "insert into car (player_name, final_position, game_result_id) values (?, ?, ?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, new String[]{"id"});
             ps.setString(1, carEntity.getPlayerName());
             ps.setInt(2, carEntity.getFinalPosition());
-            ps.setBoolean(3, carEntity.isWinner());
-            ps.setLong(4, carEntity.getGameResultId());
+            ps.setLong(3, carEntity.getGameResultId());
             return ps;
         }, keyHolder);
 

@@ -18,11 +18,12 @@ public class GameResultDao {
     }
 
     public Long insert(GameResultEntity gameResultEntity) {
-        String sql = "insert into game_result (try_count) values (?)";
+        String sql = "insert into game_result (try_count, winners) values (?, ?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, new String[]{"id"});
             ps.setInt(1, gameResultEntity.getTryCount());
+            ps.setString(2, gameResultEntity.getWinners());
             return ps;
         }, keyHolder);
 
