@@ -22,4 +22,6 @@ public class CarEntity {
     public Long getGameResultId() {
         return gameResultId;
     }
+
+
 }

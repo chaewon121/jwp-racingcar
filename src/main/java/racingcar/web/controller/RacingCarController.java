@@ -27,5 +27,9 @@ public class RacingCarController {
         return ResponseEntity.ok(resultDto);
     }
 
-    //@GetMapping("/")
+//    @GetMapping("/list.html")
+//    @ResponseBody
+//    public ResponseEntity<Ga> historyInquiry(){
+//        final
+//    }
 }

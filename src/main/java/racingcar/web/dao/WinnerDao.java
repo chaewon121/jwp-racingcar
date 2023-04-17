@@ -4,37 +4,29 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
-import racingcar.web.entity.GameResultEntity;
+import racingcar.web.entity.WinnerEntity;
 
 import java.sql.PreparedStatement;
 
 @Component
-public class GameResultDao {
+public class WinnerDao {
 
     private final JdbcTemplate jdbcTemplate;
 
-    public GameResultDao(JdbcTemplate jdbcTemplate) {
+    public WinnerDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public Long insert(GameResultEntity gameResultEntity) {
-        String sql = "insert into game_result (try_count) values (?)";
+    public Long insert(WinnerEntity winnerEntity) {
+        String sql = "insert into winner (winner_name, game_result_id) values (?, ?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, new String[]{"id"});
-            ps.setInt(1, gameResultEntity.getTryCount());
+            ps.setString(1, winnerEntity.getName());
+            ps.setLong(2,winnerEntity.getGameResultId());
             return ps;
         }, keyHolder);
 
         return keyHolder.getKey().longValue();
     }
-
-//    public List<GameResultEntity> findAll(){
-//        String sql = "select * from game_result";
-//
-//        return jdbcTemplate.query(sql, (rs, rowNum) -> new GameResultEntity(
-//                rs.getInt("try_count"),
-//                rs.getString("winners")
-//        ));
-//    }
 }

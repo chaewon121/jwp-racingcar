@@ -28,4 +28,5 @@ public class ResultDto {
     public List<CarDto> getRacingCars() {
         return racingCars;
     }
+
 }

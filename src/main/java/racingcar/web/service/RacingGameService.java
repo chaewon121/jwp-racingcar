@@ -33,8 +33,9 @@ public class RacingGameService {
         Cars winnersResult = racingGame.decideWinners();
 
 
-        Long gameResultId = repository.saveGameResult(tryCount, winnersResult);
-        repository.saveCars(gameResultId, finalResult, winnersResult);
+        Long gameResultId = repository.saveGameResult(tryCount);
+        repository.saveCars(gameResultId, finalResult);
+        repository.saveWinner(gameResultId, winnersResult);
 
         return new ResultDto(winnersResult, finalResult);
     }

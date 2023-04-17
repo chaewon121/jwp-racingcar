@@ -5,25 +5,25 @@ import racingcar.domain.Cars;
 import racingcar.domain.TryCount;
 import racingcar.web.dao.CarDao;
 import racingcar.web.dao.GameResultDao;
+import racingcar.web.dao.WinnerDao;
 import racingcar.web.entity.CarEntity;
 import racingcar.web.entity.GameResultEntity;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import racingcar.web.entity.WinnerEntity;
 
 @Repository
 public class RacingGameRepository {
 
     private final GameResultDao gameResultDao;
     private final CarDao carDao;
+    private final WinnerDao winnerDao;
 
-    public RacingGameRepository(GameResultDao gameResultDao, CarDao carDao) {
+    public RacingGameRepository(GameResultDao gameResultDao, CarDao carDao, WinnerDao winnerDao) {
         this.gameResultDao = gameResultDao;
         this.carDao = carDao;
+        this.winnerDao = winnerDao;
     }
 
-    public void saveCars(Long gameResultId, Cars finalResult, Cars winnersResult) {
+    public void saveCars(Long gameResultId, Cars finalResult) {
 
         finalResult.getCars()
                 .stream()
@@ -31,13 +31,15 @@ public class RacingGameRepository {
                 .forEach(carEntity -> carDao.insert(carEntity));
     }
 
-    public Long saveGameResult(TryCount tryCount, Cars winnersResult) {
-        List<String> winnerNames = winnersResult.getCars()
-                .stream()
-                .map(car -> car.getName().getName())
-                .collect(Collectors.toUnmodifiableList());
-        GameResultEntity gameResultEntity = new GameResultEntity(tryCount.getCount(),String.join(",",winnerNames));
+    public Long saveGameResult(TryCount tryCount) {
+        GameResultEntity gameResultEntity = new GameResultEntity(tryCount.getCount());
         return gameResultDao.insert(gameResultEntity);
     }
 
+    public void saveWinner(Long gameResultId, Cars winnersResult) {
+        winnersResult.getCars()
+                .stream()
+                .map(winner -> new WinnerEntity(winner.getName().getName(), gameResultId))
+                .forEach(winnerEntity -> winnerDao.insert(winnerEntity));
+    }
 }
