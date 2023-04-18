@@ -19,7 +19,7 @@ class GameResultDaoTest {
 
     @Test
     void save() {
-        Long id = gameResultDao.insert(new GameResultEntity(2,"채채,헙크"));
+        Long id = gameResultDao.insert(new GameResultEntity(2));
         Assertions.assertThat(1L).isEqualTo(id);
     }
 
