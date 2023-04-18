@@ -7,6 +7,7 @@ import racingcar.domain.Name;
 import racingcar.domain.RacingGame;
 import racingcar.domain.TryCount;
 import racingcar.utils.DefaultMovingStrategy;
+import racingcar.web.dto.HistoryDto;
 import racingcar.web.dto.ResultDto;
 import racingcar.web.dto.UserInputDto;
 import racingcar.web.repository.RacingGameRepository;
@@ -54,5 +55,9 @@ public class RacingGameService {
         TryCount tryCount = new TryCount(inputDto.getCount());
 
         return new RacingGame(nameList, tryCount);
+    }
+
+    public List<HistoryDto> getHistory() {
+        return repository.findAllHistory();
     }
 }

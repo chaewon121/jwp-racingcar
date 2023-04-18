@@ -1,20 +1,22 @@
-//package racingcar.web.dto;
-//
-//public class HistoryDto {
-//
-//    private final int tryCount;
-//    private final String winners;
-//
-//    public HistoryDto(int tryCount, String winners) {
-//        this.tryCount = tryCount;
-//        this.winners = winners;
-//    }
-//
-//    public int getTryCount() {
-//        return tryCount;
-//    }
-//
-//    public String getWinners() {
-//        return winners;
-//    }
-//}
+package racingcar.web.dto;
+
+import java.util.List;
+
+public class HistoryDto {
+
+    private final List<String> winners;
+    private final List<CarDto> racingCars;
+
+    public HistoryDto(List<String> winners, List<CarDto> racingCars) {
+        this.winners = winners;
+        this.racingCars = racingCars;
+    }
+
+    public List<String> getWinners() {
+        return winners;
+    }
+
+    public List<CarDto> getRacingCars() {
+        return racingCars;
+    }
+}
