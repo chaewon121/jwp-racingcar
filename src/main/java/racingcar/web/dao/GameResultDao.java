@@ -20,7 +20,7 @@ public class GameResultDao {
             Map.of(
                     rs.getLong("id"),
                     new GameResultEntity(rs.getInt("try_count")
-            ));
+                    ));
 
     public GameResultDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;

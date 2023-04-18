@@ -1,6 +1,7 @@
 package racingcar.web.entity;
 
 public class CarEntity {
+
     private final String playerName;
     private final int finalPosition;
     private final Long gameResultId;
