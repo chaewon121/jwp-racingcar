@@ -5,11 +5,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
-import racingcar.web.entity.CarEntity;
-import racingcar.web.entity.GameResultEntity;
-import racingcar.web.entity.WinnerEntity;
-
-import static org.junit.jupiter.api.Assertions.*;
+import racingcar.dao.CarDao;
+import racingcar.dao.GameResultDao;
+import racingcar.dao.WinnerDao;
+import racingcar.entity.CarEntity;
+import racingcar.entity.GameResultEntity;
+import racingcar.entity.WinnerEntity;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 class WinnerDaoTest {

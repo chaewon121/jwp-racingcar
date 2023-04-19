@@ -1,16 +1,16 @@
-package racingcar.web.repository;
+package racingcar.repository;
 
 import org.springframework.stereotype.Repository;
 import racingcar.domain.Cars;
 import racingcar.domain.TryCount;
-import racingcar.web.dao.CarDao;
-import racingcar.web.dao.GameResultDao;
-import racingcar.web.dao.WinnerDao;
-import racingcar.web.dto.CarDto;
-import racingcar.web.dto.HistoryDto;
-import racingcar.web.entity.CarEntity;
-import racingcar.web.entity.GameResultEntity;
-import racingcar.web.entity.WinnerEntity;
+import racingcar.dao.CarDao;
+import racingcar.dao.GameResultDao;
+import racingcar.dao.WinnerDao;
+import racingcar.dto.web.CarDto;
+import racingcar.dto.web.HistoryDto;
+import racingcar.entity.CarEntity;
+import racingcar.entity.GameResultEntity;
+import racingcar.entity.WinnerEntity;
 
 import java.util.ArrayList;
 import java.util.List;

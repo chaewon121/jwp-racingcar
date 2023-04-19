@@ -1,4 +1,4 @@
-package racingcar.web.service;
+package racingcar.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -7,10 +7,10 @@ import racingcar.domain.Name;
 import racingcar.domain.RacingGame;
 import racingcar.domain.TryCount;
 import racingcar.utils.DefaultMovingStrategy;
-import racingcar.web.dto.HistoryDto;
-import racingcar.web.dto.ResultDto;
-import racingcar.web.dto.UserInputDto;
-import racingcar.web.repository.RacingGameRepository;
+import racingcar.dto.web.HistoryDto;
+import racingcar.dto.web.ResultDto;
+import racingcar.dto.web.UserInputDto;
+import racingcar.repository.RacingGameRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;

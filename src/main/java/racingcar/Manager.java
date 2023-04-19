@@ -1,6 +1,6 @@
 package racingcar;
 
-import racingcar.controller.RacingGameController;
+import racingcar.controller.RacingGameConsoleController;
 import racingcar.domain.GameProcess;
 import racingcar.utils.DefaultMovingStrategy;
 import racingcar.view.IOViewResolver;
@@ -16,7 +16,7 @@ public class Manager {
 
     public static void run() {
         IOViewResolver ioViewResolver = new IOViewResolver(InputView.getInstance(), OutputView.getInstance());
-        RacingGameController controller = new RacingGameController(ioViewResolver, new DefaultMovingStrategy());
+        RacingGameConsoleController controller = new RacingGameConsoleController(ioViewResolver, new DefaultMovingStrategy());
 
         GameProcess process = INITIAL_STATUS;
         while (process != GameProcess.EXIT) {

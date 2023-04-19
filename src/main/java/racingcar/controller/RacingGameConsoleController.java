@@ -19,14 +19,14 @@ import java.util.Map;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-public class RacingGameController {
+public class RacingGameConsoleController {
     private final IOViewResolver ioViewResolver;
     private final Map<GameProcess, Supplier<GameProcess>> processMap;
 
     private RacingGame racingGame;
     private List<Name> carNames;
 
-    public RacingGameController(IOViewResolver ioViewResolver, MovingStrategy strategy) {
+    public RacingGameConsoleController(IOViewResolver ioViewResolver, MovingStrategy strategy) {
         this.ioViewResolver = ioViewResolver;
         this.processMap = new EnumMap<>(GameProcess.class);
         initProcessMap(strategy);

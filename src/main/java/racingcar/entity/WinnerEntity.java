@@ -1,4 +1,4 @@
-package racingcar.web.entity;
+package racingcar.entity;
 
 public class WinnerEntity {
 
