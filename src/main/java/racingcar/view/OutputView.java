@@ -8,7 +8,6 @@ import racingcar.dto.output.PrintExceptionDto;
 import racingcar.dto.output.PrintMovingStatusDto;
 import racingcar.dto.output.PrintWinnersDto;
 
-import java.util.List;
 import java.util.StringJoiner;
 
 public class OutputView {
@@ -25,12 +24,8 @@ public class OutputView {
 
     public void printTotalMovingStatus(PrintMovingStatusDto dto) {
         print(Const.PRINT_RESULT_MESSAGE);
-        List<Cars> totalMovingStatus = dto.getMovingStatus();
-        for (Cars movingStatus : totalMovingStatus) {
-            printMovingStatus(movingStatus);
-        }
-
-        printMovingStatus(totalMovingStatus.get(totalMovingStatus.size() - 1));
+        Cars finalCars = dto.getMovingStatus();
+        printMovingStatus(finalCars);
     }
 
     private void printMovingStatus(Cars cars) {
@@ -46,12 +41,9 @@ public class OutputView {
 
     private String drawMovingLength(Position position) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < position.getPosition(); i++) {
-            stringBuilder.append(Const.DELIMITER);
-        }
+        stringBuilder.append(Const.DELIMITER.repeat(Math.max(0, position.getPosition())));
         return stringBuilder.toString();
     }
-
 
     public void printWinners(PrintWinnersDto dto) {
         Cars cars = dto.getCars();
