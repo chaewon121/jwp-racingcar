@@ -5,28 +5,23 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
-import racingcar.entity.CarEntity;
 import racingcar.entity.GameResultEntity;
 
+/**
+ * jdbcTest로 바꿔보기
+ */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
-class CarDaoTest {
+class GameResultJdbcDaoTest {
 
     @Autowired
-    private CarDao carDao;
-
-    @Autowired
-    private GameResultDao gameResultDao;
-
+    private GameResultJdbcDao gameResultJdbcDao;
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     @Test
     void save() {
-        Long gameResultId = gameResultDao.insert(new GameResultEntity(3));
-        Assertions.assertThat(1L).isEqualTo(gameResultId);
-
-        CarEntity carEntity = new CarEntity("헙크", 3,  1L);
-        Long carId = carDao.insert(carEntity);
-        Assertions.assertThat(1L).isEqualTo(carId);
+        Long id = gameResultJdbcDao.insert(new GameResultEntity(2));
+        Assertions.assertThat(1L).isEqualTo(id);
     }
+
 }

@@ -17,12 +17,3 @@ CREATE TABLE car
     PRIMARY KEY (id),
     FOREIGN KEY (game_result_id) REFERENCES game_result (id)
 );
-
-CREATE TABLE winner
-(
-    id              INT NOT NULL AUTO_INCREMENT,
-    winner_name     VARCHAR(255) NOT NULL,
-    game_result_id INT NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (game_result_id) REFERENCES game_result (id)
-);
