@@ -10,6 +10,7 @@ import racingcar.dto.output.PrintCriticalExceptionDto;
 import racingcar.dto.output.PrintExceptionDto;
 import racingcar.dto.output.PrintMovingStatusDto;
 import racingcar.dto.output.PrintWinnersDto;
+import racingcar.service.RacingGameService;
 import racingcar.utils.MovingStrategy;
 import racingcar.view.IOViewResolver;
 
@@ -25,10 +26,12 @@ public class RacingGameConsoleController {
 
     private RacingGame racingGame;
     private List<Name> carNames;
+    private RacingGameService racingGameService;
 
-    public RacingGameConsoleController(IOViewResolver ioViewResolver, MovingStrategy strategy) {
+    public RacingGameConsoleController(IOViewResolver ioViewResolver, MovingStrategy strategy,RacingGameService racingGameService) {
         this.ioViewResolver = ioViewResolver;
         this.processMap = new EnumMap<>(GameProcess.class);
+        this.racingGameService = racingGameService;
         initProcessMap(strategy);
     }
 
