@@ -29,7 +29,6 @@ public class RacingGameConsoleController {
     public RacingGameConsoleController(IOViewResolver ioViewResolver, MovingStrategy strategy) {
         this.ioViewResolver = ioViewResolver;
         this.processMap = new EnumMap<>(GameProcess.class);
-        // this.racingGameService = new RacingGameService()
         initProcessMap(strategy);
     }
 

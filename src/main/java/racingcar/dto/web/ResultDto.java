@@ -1,32 +1,22 @@
 package racingcar.dto.web;
 
-import racingcar.domain.Cars;
-
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ResultDto {
 
-    private final List<String> winners;
+    private final List<String> winnerNames;
     private final List<CarDto> racingCars;
 
-    public ResultDto(Cars winnersResult, Cars finalResult) {
-        this.winners = winnersResult.getCars()
-                .stream()
-                .map(car -> car.getName().getName())
-                .collect(Collectors.toList());
-        this.racingCars = finalResult.getCars()
-                .stream()
-                .map(car -> new CarDto(car.getName().getName(), car.getPosition().getPosition()))
-                .collect(Collectors.toList());
+    public ResultDto(List<String> winnerNames, List<CarDto> racingCars) {
+        this.winnerNames = winnerNames;
+        this.racingCars = racingCars;
     }
 
     public List<String> getWinners() {
-        return winners;
+        return winnerNames;
     }
 
     public List<CarDto> getRacingCars() {
         return racingCars;
     }
-
 }
