@@ -12,16 +12,13 @@ import java.util.stream.Collectors;
 public class InputView {
     private static final String DELIMITER = ",";
     private static final Scanner sc = new Scanner(System.in);
+    private static final InputView INPUT_VIEW = new InputView();
 
     private InputView() {
     }
 
-    private static class InputViewSingletonHelper {
-        private static final InputView INPUT_VIEW = new InputView();
-    }
-
     public static InputView getInstance() {
-        return InputViewSingletonHelper.INPUT_VIEW;
+        return INPUT_VIEW;
     }
 
     public CarNameRequest readCarNames() {
