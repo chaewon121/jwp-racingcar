@@ -18,11 +18,6 @@ public class RacingGame {
         this.tryCount = tryCount;
     }
 
-    public RacingGame(Cars cars, TryCount tryCount) {
-        this.cars = cars;
-        this.tryCount = tryCount;
-    }
-
     public Cars start(MovingStrategy strategy) {
 
         while (tryCount.canTry()) {
@@ -31,13 +26,5 @@ public class RacingGame {
         }
 
         return new Cars(cars);
-    }
-
-    public Cars decideWinners() {
-        return cars.getWinners();
-    }
-
-    public TryCount getTryCount() {
-        return tryCount;
     }
 }

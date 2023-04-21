@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
-import racingcar.dto.web.ResultDto;
-import racingcar.dto.web.UserInputDto;
+import racingcar.dto.ResultDto;
+import racingcar.dto.UserInputDto;
 import racingcar.service.RacingGameService;
 
 import java.util.List;

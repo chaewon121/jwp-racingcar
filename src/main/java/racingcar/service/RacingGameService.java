@@ -8,9 +8,9 @@ import racingcar.domain.Cars;
 import racingcar.domain.Name;
 import racingcar.domain.RacingGame;
 import racingcar.domain.TryCount;
-import racingcar.dto.web.CarDto;
-import racingcar.dto.web.ResultDto;
-import racingcar.dto.web.UserInputDto;
+import racingcar.dto.CarDto;
+import racingcar.dto.ResultDto;
+import racingcar.dto.UserInputDto;
 import racingcar.entity.CarEntity;
 import racingcar.entity.GameResultEntity;
 import racingcar.utils.DefaultMovingStrategy;
@@ -38,7 +38,7 @@ public class RacingGameService {
 
         List<CarDto> finalResult = getResults(racingGame).getCars()
                 .stream()
-                .map(car -> new CarDto(car.getName().getName(), car.getPosition().getPosition()))
+                .map(car -> new CarDto(car.getName(), car.getPosition()))
                 .collect(Collectors.toList());
 
         Long gameResultId = gameResultDao.insert(new GameResultEntity(tryCount.getCount()));
@@ -91,7 +91,7 @@ public class RacingGameService {
         return maps;
     }
 
-    private List<String> calculateWinners(List<CarDto> cars) {
+    public List<String> calculateWinners(List<CarDto> cars) {
         int maxPosition = getMaxPosition(cars);
         return cars.stream()
                 .filter(car -> car.getPosition() == (maxPosition))
