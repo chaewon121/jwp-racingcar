@@ -9,7 +9,6 @@ import racingcar.entity.CarEntity;
 
 import java.sql.PreparedStatement;
 import java.util.List;
-import java.util.Objects;
 
 @Component
 public class CarJdbcDao implements CarDao {
@@ -37,7 +36,7 @@ public class CarJdbcDao implements CarDao {
             return ps;
         }, keyHolder);
 
-        return Objects.requireNonNull(keyHolder.getKey()).longValue();
+        return keyHolder.getKey().longValue();
     }
 
     @Override

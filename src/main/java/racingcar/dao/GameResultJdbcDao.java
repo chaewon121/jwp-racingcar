@@ -10,7 +10,6 @@ import racingcar.entity.GameResultEntity;
 import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 @Component
 public class GameResultJdbcDao implements GameResultDao {
@@ -37,13 +36,11 @@ public class GameResultJdbcDao implements GameResultDao {
             return ps;
         }, keyHolder);
 
-        // TODO: Objects 로 수정 하였는데 그 이유가..?
-        return Objects.requireNonNull(keyHolder.getKey()).longValue();
+        return keyHolder.getKey().longValue();
     }
 
     @Override
     public List<Map<Long, GameResultEntity>> findAll() {
         return jdbcTemplate.query("SELECT * FROM game_result", rowMapper);
     }
-
 }
