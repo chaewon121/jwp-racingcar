@@ -32,7 +32,7 @@ public class RacingGameService {
     }
 
     @Transactional
-    public ResultDto getResult(UserInputDto inputDto) {
+    public Long saveUserInput(UserInputDto inputDto) {
         RacingGame racingGame = getRacingGame(inputDto);
         TryCount tryCount = new TryCount(inputDto.getCount());
 
@@ -40,12 +40,10 @@ public class RacingGameService {
                 .stream()
                 .map(car -> new CarDto(car.getName().getName(), car.getPosition().getPosition()))
                 .collect(Collectors.toList());
-        List<String> winnersResult = calculateWinners(finalResult);
 
         Long gameResultId = gameResultDao.insert(new GameResultEntity(tryCount.getCount()));
         saveCars(gameResultId, finalResult);
-
-        return new ResultDto(winnersResult, finalResult);
+        return gameResultId;
     }
 
     private RacingGame getRacingGame(UserInputDto inputDto) {
@@ -63,6 +61,15 @@ public class RacingGameService {
         cars.stream()
                 .map(car -> new CarEntity(car.getName(), car.getPosition(), gameResultId))
                 .forEach(carDao::insert);
+    }
+
+    public ResultDto getResult(Long gameResultId) {
+        List<CarDto> finalResult = carDao.findByGameResultId(gameResultId)
+                .stream()
+                .map(carEntity -> new CarDto(carEntity.getPlayerName(), carEntity.getFinalPosition()))
+                .collect(Collectors.toList());
+        List<String> winnersResult = calculateWinners(finalResult);
+        return new ResultDto(winnersResult, finalResult);
     }
 
     private Cars getResults(RacingGame racingGame) {

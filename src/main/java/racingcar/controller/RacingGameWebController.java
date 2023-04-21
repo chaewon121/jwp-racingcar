@@ -24,8 +24,8 @@ public class RacingGameWebController {
     @PostMapping("/plays")
     @ResponseBody
     public ResponseEntity<ResultDto> racingGame(@RequestBody UserInputDto inputDto) {
-        final ResultDto resultDto = racingGameService.getResult(inputDto);
-
+        final Long gameResultId = racingGameService.saveUserInput(inputDto);
+        final ResultDto resultDto = racingGameService.getResult(gameResultId);
         return ResponseEntity.ok(resultDto);
     }
 
